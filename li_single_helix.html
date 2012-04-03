@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <title>Single Helix Animated List (Vendor Tags === Headache)</title>
+    <link href='http://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
+    <script src="http://cdn.enderjs.com/jeesh.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+        body {
+            font-family:"Electrolize", "Helvetica Neue", sans-serif;
+        }
+        button#derp {
+            font-family:"Helvetica Neue", sans-serif;
+            font-size:18px;
+        }
+
+        @-webkit-keyframes herpderp {
+            0% {
+                -webkit-transform:rotateY(-90deg);
+                opacity:0;
+            }
+            100% {
+                -webkit-transform:rotateY(0deg);
+                opacity:1;
+            }
+        }
+
+        @-moz-keyframes herpderp {
+            0% {
+                -moz-transform:rotateY(-90deg);
+                opacity:0;
+            }
+            100% {
+                -moz-transform:rotateY(0deg);
+                opacity:1;
+            }
+        }     
+
+        @keyframes herpderp {
+            0% {
+                transform:rotateY(-90deg);
+                opacity:0;
+            }
+            100% {
+                transform:rotateY(0deg);
+                opacity:1;
+            }
+        }       
+
+        ul#herp {
+            display:none;
+            width:650px; height:250px;
+            position:relative;
+            left:113px;
+            top:-7px;
+            -webkit-perspective:550px;
+            -moz-perspective:850px;
+            perspective:850px;
+        }
+
+        ul#herp li {
+            position:relative;
+            font-size:28px;
+            display:block;
+            opacity:0;
+            line-height:1.5em;
+
+            -webkit-transform-origin:left;
+            -moz-transform-origin:left;
+
+            -webkit-transform:rotateY(-90deg);
+            -moz-transform:rotateY(-90deg);
+            transform:rotateY(-90deg);
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="derp">Show Me</button>
+    <ul id="herp">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipisicing elit</li>
+        <li>Sed do eiusmod tempor</li>
+        <li>Incididunt ut labore et dolore magna aliqua.</li>
+        <li>Ut enim ad minim veniam,quis nostrud exercitation</li>
+        <li>Excepteur sint occaecat cupidatat</li>
+        <li>Non proident, sunt in culpa qui</li>
+        <li>Officia deserunt mollit anim id est laborum</li>
+    </ul>
+
+    <script type="text/javascript">
+    !function($) {
+        var delay = 0
+          , delayFactor = 0.1
+          , ran = false
+        $('button#derp').click(
+            function() {
+                if(ran) window.location.reload()
+                ran = true
+                $('ul#herp').css({display:'block'})
+                $('ul#herp li').each(                        
+                    function(el, i) {
+                        $(el).css({  
+                            '-webkit-transform-origin':'left'
+                            , '-webkit-animation':'herpderp 0.8s 1 ease-in'
+                            , '-webkit-animation-delay':delay + 's'
+                            , '-webkit-animation-fill-mode':'forwards'
+
+                            , '-moz-transform-origin':'left'
+                            , '-moz-animation':'herpderp 0.8s 1 ease-in'
+                            , '-moz-animation-delay':delay + 's'
+                            , '-moz-animation-fill-mode':'forwards' 
+
+                            , 'transform-origin':'left'
+                            , 'animation':'herpderp 0.8s 1 ease-in'
+                            , 'animation-delay':delay + 's'
+                            , 'animation-fill-mode':'forwards'    
+
+                        })
+                        delay += delayFactor
+                    }
+                )
+                $(this).text('Reload')
+            });
+    }($);
+    </script>
+</body>
+</html>
