@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <title>Swoop Squares (otanstudio: Stupid Web Tricks)</title>
+    <script src="j/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="j/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<style type="text/css" media="screen">
+    .main {
+        display:block;
+        margin:auto;
+        width:290px; height:400px;
+    }
+    
+    .panel {
+        opacity:0;
+        position:relative;
+        display:block;
+        float:left;
+        width:64px; height:64px;
+        margin:3px;
+        background-color:#a92815;
+
+        -webkit-border-radius:6%;
+        -moz-border-radius:6%;
+    }
+
+    .panel {
+        -webkit-transition:all 2s ease-in-out;
+        -webkit-transform-style:preserve-3d;
+        -webkit-transform:rotateX(-200deg) rotateY(-180deg) translateX(700px) rotateZ(250deg) ;
+
+        -moz-transition:all 2s ease-in-out;
+        -moz-transform-style:preserve-3d;
+        -moz-transform:rotateX(-200deg) rotateY(-180deg) translateX(700px) rotateZ(250deg) ;        
+    }
+
+    .panel_feh {
+        opacity:1;
+        -webkit-transform:rotateX(0deg) rotateY(0deg) translateX(0px) rotateZ(0deg) ;
+        -moz-transform:rotateX(0deg) rotateY(0deg) translateX(0px) rotateZ(0deg) ;
+    }
+
+    .end {
+        clear:left;
+    }
+
+    button {
+        padding:10px;
+        font-size:18px;
+    }
+
+
+</style>
+
+<button id="go">go</button>
+<button id="reset">reload</button>
+
+<div id="container" class="main">
+</div>
+
+<script type="text/javascript">
+!function($, _){     
+    function stack() {
+        var panel = '<div class="panel"></div>'
+        _.chain(_.range(20)).each(function(i) {
+            $('div#container').append(panel)
+        })
+
+        $('div#container').contents().each(function(i, el) {
+            if( 0 === ( i - 1 ) % 4 ) {
+                $(el).addClass('end')
+            }
+        })
+    }
+
+    stack();
+
+    $('button#go').click(function() {
+        $('div.panel').each(function(i, panel) {
+            $(panel).css({
+                '-webkit-transition-delay':0.1*i+'s'
+                , '-moz-transition-delay':0.1*i+'s'
+            }).addClass('panel_feh')
+        })
+    });
+
+    $('button#reset').click(function(){ 
+        window.location.reload()
+    })
+    
+}(jQuery, _);
+</script>
+</body>
+</html>
