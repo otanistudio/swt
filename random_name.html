@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<title>Otani Studio: Naive Random Name Generator</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="j/random_name.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+<style type="text/css">
+    #output {
+        font-family:Helvetica Neue, Arial, sans-serif;
+        font-size:130%;
+        text-transform:capitalize;
+        padding:8px;
+        margin:0 0 10px 0;
+        width:300px;
+        border:1px solid black;
+    }
+    
+    #main {
+        width:350px;
+        margin:10px auto 12px auto;
+    }
+    
+    #generate {
+        margin-right: 0px;
+    }
+</style>
+
+<h1>Stupid Web Tricks: Na&iuml;ve Random Name Generator</h1>
+
+<div id="description">
+
+<div id="main">
+    <div id="output"></div>
+    <button id="generate">Generate</button>
+</div>
+<p>
+    Very simple. C = Consonant and V = Vowel.
+</p>
+<p>
+    It will use one of the two following patterns to generate a random name: cvcc(v|c|v) or vccv(c|v|c). Hit "generate" to create a new set of a dozen
+    random names.
+</p>
+</div>
+
+<script type="text/javascript">
+    var r = new RandomName();
+    
+    $("#generate").click(
+        function(e) {
+            e.preventDefault();
+            $("#output")[0].innerHTML = "";
+            for(x = 0; x < 12; x++) {
+                $('#output')[0].innerHTML +=  r.generate() + "<br />";
+            }
+        }
+    );    
+</script>
+
+<p>
+    Source: <a href="https://github.com/otanistudio/swt/blob/master/random_name.html">https://github.com/otanistudio/swt/blob/master/random_name.html</a>
+</p>
+
+</body>
+</html>
