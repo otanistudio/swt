@@ -8,6 +8,7 @@ Junk I'm doodling over with respect to CSS3 Transforms and Animations. I'll add 
 Here's some other random junk
 
 * [Random Name Generator](http://otanistudio.github.com/swt/random_name.html)
+* [Websocket Chat Server + BackboneJS Frontend](https://gist.github.com/2856630/)
 
 ## License
 
