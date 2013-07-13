@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drop 00 (otanstudio: Stupid Web Tricks)</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="j/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<style type="text/css" media="screen">
+    .main {
+        display:block;
+        margin:auto;
+        width:350px; height:400px;
+    }
+    
+    .panel {
+        opacity: 1;
+        position: relative;
+        display: block;
+        float: left;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        background-color: rgb(192, 192, 192);
+        -webkit-border-radius: 25%;
+        -moz-border-radius:25%;        
+    }
+
+    .panel {
+      
+    }
+
+    .panel_feh {
+    }
+
+    .snip {
+        clear:left;
+    }
+
+    button {
+        padding:10px;
+        font-size:18px;
+    }
+
+
+</style>
+
+<button id="go">again</button>
+
+<div id="container" class="main">
+</div>
+
+<a href="https://github.com/otanistudio/swt/blob/master/drop00.html">source: https://github.com/otanistudio/swt/blob/master/drop00.html</a>
+
+<script type="text/javascript">
+!function($, _){     
+    var panel = '<div class="panel"></div>';
+    _.chain(_.range(20)).each(function(i) {
+        $('div#container').append(panel);
+    })
+    $('div#container div.panel').each(function(i, el){
+        if (0 === i % 4) {
+           $(el).addClass('snip');
+        }
+    });
+    
+}(jQuery, _);
+</script>
+</body>
+</html>
