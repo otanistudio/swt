@@ -1,14 +1,6 @@
 # Stupid Web Tricks
 
-Junk I'm doodling over with respect to CSS3 Transforms and Animations. I'll add stuff as I go along.
-
-* [Single Helix Unordered List](http://otanistudio.github.com/swt/li_single_helix.html)
-* [Swoop Squares](http://otanistudio.github.com/swt/swoop_squares.html)
-
-Here's some other random junk
-
-* [Random Name Generator](http://otanistudio.github.com/swt/random_name.html)
-* [Websocket Chat Server + BackboneJS Frontend](https://gist.github.com/2856630/)
+[http://otanistudio.github.io/swt](http://otanistudio.github.io/swt)
 
 ## License
 
