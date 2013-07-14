@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drop 00 (otanstudio: Stupid Web Tricks)</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="j/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<style type="text/css" media="screen">
+    .main {
+        display:block;
+        margin:auto;
+        width:350px; height:400px;
+        -webkit-perspective:600px;
+        perspective:600px;
+    }
+    
+    .panel {
+        opacity: 0;
+        position: relative;
+        display: block;
+        float: left;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        background-color: rgb(192, 192, 192);
+        -webkit-border-radius: 25%;
+        border-radius:25%;       
+    }
+
+    .panel {
+        -webkit-transform:translateZ(200px);
+        transform:translateZ(200px);
+    }
+
+    .panel_idle {
+        opacity:1;
+        -webkit-transition:all 1s ease-in-out;
+        -webkit-transform:translateZ(0);
+        transform:translateZ(0);    
+    }
+
+    .snip {
+        clear:left;
+    }
+
+    button {
+        position:absolute;
+        top:10px;
+        left:10px;
+        padding:10px;
+        font-size:18px;
+        display:none;
+    }
+
+    .bottom {
+        position:absolute;
+        bottom:18px;
+        left:18px;
+    }
+
+</style>
+
+<button id="go">again</button>
+
+<div id="container" class="main">
+</div>
+
+<div class="bottom">
+<a href="https://github.com/otanistudio/swt/blob/master/drop00.html">source: https://github.com/otanistudio/swt/blob/master/drop00.html</a>
+</div>
+
+<script>
+!function($, _){     
+    var panel = '<div class="panel"></div>',
+        deferredPanels = new $.Deferred(),
+        delayMax = 0.5;
+
+    $('button#go').click(function(){
+        window.location.reload();
+    });
+
+    deferredPanels.then(
+        function(){
+            $('div#container div.panel').each(function(i, el) {
+                var delay = Math.random() * delayMax,
+                    delayStr = delay + "s";
+                $(el).css({
+                    '-webkit-transition-delay':delayStr,
+                    '-transtion-delay':delayStr
+                }).addClass('panel_idle');
+            }); 
+        }
+    ).done(
+        function() {
+            $('button#go').show();
+        }
+    );
+
+    (function() {
+        _.chain(_.range(20)).each(function(i) {
+            $('div#container').append(panel);
+        });
+
+        $('div#container div.panel').each(function(i, el){
+            if (0 === i % 4) {
+                $(el).addClass('snip');
+            }
+        });
+
+        window.setTimeout(function(){deferredPanels.resolve();}, delayMax * 1000);
+    })();
+
+}(jQuery, _);
+</script>
+</body>
+</html>
