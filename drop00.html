@@ -115,7 +115,7 @@
         }
         var b = Math.floor(Math.random() * palette.length);
         $(el).css({'background-color':palette[b]});
-    }).last().bind('transitionend', function(){
+    }).last().bind('transitionend webkitTransitionEnd', function(){
         $('button#go').show();
     });
 
