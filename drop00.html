@@ -13,7 +13,7 @@
     .main {
         display:block;
         margin:auto;
-        width:325px; height:400px;
+        width:768px; height:800px;
         -webkit-perspective:600px;
         perspective:600px;
     }
@@ -106,12 +106,12 @@
         }
     );
 
-    _.chain(_.range(20)).each(function(i) {
+    _.chain(_.range(90)).each(function(i) {
         $('div#container').append(panel);
     });
 
     $('div#container div.panel').each(function(i, el){
-        if (0 === i % 4) {
+        if (0 === i % 9) {
             $(el).addClass('snip');
         }
         var b = Math.floor(Math.random() * palette.length);
