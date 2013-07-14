@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Drop 00 (otanstudio: Stupid Web Tricks)</title>
+    <title>Drop Icons 00 (otanstudio: Stupid Web Tricks)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -13,7 +13,7 @@
     .main {
         display:block;
         margin:auto;
-        width:350px; height:400px;
+        width:325px; height:400px;
         -webkit-perspective:600px;
         perspective:600px;
     }
@@ -94,25 +94,21 @@
                 }).addClass('panel_idle');
             }); 
         }
-    ).done(
-        function() {
-            $('button#go').show();
-        }
     );
 
-    (function() {
-        _.chain(_.range(20)).each(function(i) {
-            $('div#container').append(panel);
-        });
+    _.chain(_.range(20)).each(function(i) {
+        $('div#container').append(panel);
+    });
 
-        $('div#container div.panel').each(function(i, el){
-            if (0 === i % 4) {
-                $(el).addClass('snip');
-            }
-        });
+    $('div#container div.panel').each(function(i, el){
+        if (0 === i % 4) {
+            $(el).addClass('snip');
+        }
+    }).last().bind('transitionend', function(){
+        $('button#go').show();
+    });
 
-        window.setTimeout(function(){deferredPanels.resolve();}, delayMax * 1000);
-    })();
+    window.setTimeout(function(){deferredPanels.resolve();}, delayMax * 1000);
 
 }(jQuery, _);
 </script>
